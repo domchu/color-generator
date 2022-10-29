@@ -6,6 +6,17 @@ const SingleColor = ({ rgb, weight, index, hexColor }) => {
   const bcg = rgb.join(",");
   const hex = rgbToHex(...rgb);
   const hexValue = `#${hexColor}`;
+
+  //* useEffect to clear the clipboard after 3secs
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setAlert(false);
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [alert]);
+
+  //* end of the useEffect
   return (
     <article
       className={`color ${index > 10 && "color-light"}`}
